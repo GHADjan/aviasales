@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Ticket</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Add Ticket</h1>
+
+    <form action="/add_ticket" method="post">
+        <label for="origin">Origin:</label>
+        <input type="text" name="origin" id="origin" required><br>
+
+        <label for="destination">Destination:</label>
+        <input type="text" name="destination" id="destination" required><br>
+
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date" required><br>
+
+        <label for="price">Price:</label>
+        <input type="text" name="price" id="price" required><br>
+
+        <input type="submit" value="Add Ticket">
+    </form>
+</body>
+</html>
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Search Results</h1>
+
+    <p>Origin: {{ origin }}</p>
+    <p>Destination: {{ destination }}</p>
+
+    {% if flights %}
+        <h2>Flights Found</h2>
+        <ul>
+            {% for flight in flights %}
+                <li>Origin: {{ flight[1] }}, Destination: {{ flight[2] }}, Date: {{ flight[3] }}, Price: {{ flight[4] }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No flights found.</p>
+    {% endif %}
+</body>
+</html>

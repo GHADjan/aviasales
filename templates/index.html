@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AviaSales</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% if 'username' in session %}
+        <p>Welcome, {{ username }}!</p>
+        <a href="/logout">Logout</a>
+    {% else %}
+        <a href="/login">Login</a> /
+        <a href="/register">Register</a>
+    {% endif %}
+
+    <h1>Flight Search</h1>
+
+    <form action="/search" method="post">
+        <label for="origin">Origin:</label>
+        <input type="text" name="origin" id="origin" required><br>
+
+        <label for="destination">Destination:</label>
+        <input type="text" name="destination" id="destination" required><br>
+
+        <input type="submit" value="Search">
+    </form>
+
+    <h2>All Flights</h2>
+    <ul>
+        {% for flight in flights %}
+            <li>Origin: {{ flight[1] }}, Destination: {{ flight[2] }}, Date: {{ flight[3] }}, Price: {{ flight[4] }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add Ticket</h2>
+
+    <form action="/add_ticket" method="post" class="container">
+        <label for="origin">Origin:</label>
+        <input type="text" name="origin" id="origin" required><br>
+
+        <label for="destination">Destination:</label>
+        <input type="text" name="destination" id="destination" required><br>
+
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date" required><br>
+
+        <label for="price">Price:</label>
+        <input type="text" name="price" id="price" required><br>
+
+        <input type="submit" value="Add Ticket">
+    </form>
+</body>
+</html>
